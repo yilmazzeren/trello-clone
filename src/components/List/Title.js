@@ -24,7 +24,7 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-export default function Title() {
+export default function Title({ title }) {
   const [open, setOpen] = useState(false);
   const classes = useStyle();
   return (
@@ -33,7 +33,7 @@ export default function Title() {
         <div>
           <InputBase
             autoFocus
-            value="Başlığı Değiştir"
+            value={title}
             inputProps={{
               className: classes.input,
             }}
@@ -47,7 +47,7 @@ export default function Title() {
             className={classes.editTableTitle}
             onClick={() => setOpen(!open)}
           >
-            Yapılacaklar
+            {title}
           </Typography>
           <MoreHorizIcon />
         </div>

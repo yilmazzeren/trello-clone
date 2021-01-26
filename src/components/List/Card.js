@@ -11,12 +11,12 @@ const useStyle = makeStyles((theme) => ({
     },
   },
 }));
-export default function Card() {
+export default function Card({ card }) {
   const classes = useStyle();
 
   return (
     <div>
-      <Paper className={classes.card}>Yemek yapılacak</Paper>
+      <Paper className={classes.card}>{card.title}</Paper>
     </div>
   );
 }
