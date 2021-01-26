@@ -9,8 +9,15 @@ const useStyle = makeStyles((theme) => ({
   },
   editTableTitle: {
     flexGrow: 1,
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   input: {
+    fontSize: "1.2rem",
+    fontWeight: "bold",
     margin: theme.spacing(1),
     "&:focus": {
       backgroundColor: "#ddd",
@@ -25,7 +32,8 @@ export default function Title() {
       {open ? (
         <div>
           <InputBase
-            value="Todo"
+            autoFocus
+            value="Başlığı Değiştir"
             inputProps={{
               className: classes.input,
             }}
@@ -39,7 +47,7 @@ export default function Title() {
             className={classes.editTableTitle}
             onClick={() => setOpen(!open)}
           >
-            todo
+            Yapılacaklar
           </Typography>
           <MoreHorizIcon />
         </div>
