@@ -23,17 +23,23 @@ const useStyle = makeStyles((theme) => ({
     margin: theme.spacing(0, 1, 1, 1),
   },
 }));
-export default function InputCard({ setOpen, listId }) {
+export default function InputCard({ setOpen, listId, type }) {
   const classes = useStyle();
-  const { addMoreCard } = useContext(storeApi);
+  const { addMoreCard, addMoreList } = useContext(storeApi);
   const [cardTitle, setCardTitle] = useState("");
   const handleChange = (e) => {
     setCardTitle(e.target.value);
   };
   const handleBtnConfirm = () => {
-    addMoreCard(cardTitle, listId);
-    setCardTitle("");
-    setOpen(false);
+    if (type === "card") {
+      addMoreCard(cardTitle, listId);
+      setCardTitle("");
+      setOpen(false);
+    } else {
+      addMoreList(cardTitle);
+      setCardTitle("");
+      setOpen(false);
+    }
   };
   return (
     <div>
@@ -47,13 +53,17 @@ export default function InputCard({ setOpen, listId }) {
               className: classes.input,
             }}
             value={cardTitle}
-            placeholder="Lütfen bu başlık için bir kart girin"
+            placeholder={
+              type === "card"
+                ? "Lütfen bu başlık için bir kart girin"
+                : "Lütfen liste başlık ismi girin"
+            }
           />
         </Paper>
       </div>
       <div className={classes.confirm}>
         <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>
-          Kart Ekle
+          {type === "card" ? "Kart Ekle" : "Liste Ekle"}
         </Button>
         <IconButton onClick={() => setOpen(false)}>
           <ClearIcon />
