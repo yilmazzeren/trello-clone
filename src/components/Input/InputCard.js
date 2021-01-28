@@ -8,6 +8,7 @@ const useStyle = makeStyles((theme) => ({
   card: {
     paddingBottom: theme.spacing(4),
     margin: theme.spacing(0, 1, 1, 1),
+    width: "280px",
   },
   input: {
     margin: theme.spacing(1),
